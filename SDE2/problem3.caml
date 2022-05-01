@@ -1,0 +1,14 @@
+(* Problem Three: The Sum of 2 Problem *)
+(* Prototype: sumOfTwo(a,b,v) returns false if there does not exdist 
+and integer in a, which added to any integer in b, equals v.  If 
+there is an integer in a, and an integer in b that sum to v, return 
+true. 
+ 
+Signature:  
+ 
+val sumOfTwo : int list * int list * int -> bool = <fun> *)
+let rec sumOfTwo = function (a,b,v) ->
+  if a == [] || b == [] then false
+  else
+  if List.hd a + List.hd b == v then true
+  else sumOfTwo(List.tl a, b, v) || sumOfTwo(a, List.tl b, v);;
