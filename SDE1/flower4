@@ -1,0 +1,141 @@
+[1mtrue.[0m
+
+?- consult('/Users/kevinmody/Desktop/cpsc3520/SDE1/SDE1_flower.pl').
+
+
+[1mtrue.[0m
+
+?- listing(bedplan(F1,F2,F3,F4)).
+
+
+bedplan(F1, F2, F3, F4) :-
+    flower(F1, S1, M1, C1),
+    flower(F2, S2, M2, C2),
+    flower(F3, S3, M3, C3),
+    flower(F4, S4, M4, C4),
+
+    F1\=F2,
+    F1\=F3,
+    F1\=F4,
+    F2\=F3,
+    F2\=F4,
+    F3\=F4,
+
+    C1\=C2,
+    C2\=C3,
+    C3\=C4,
+    M1=dry,
+    M2=wet,
+    M3=wet,
+    M4=dry,
+
+    size(S1, S2),
+    size(S2, S3),
+    size(S3, S4),
+    write('flower1 is '),
+    write(F1),
+    write(', '),
+    write(S1),
+    write(', '),
+    write(M1),
+    write(', '),
+    write(C1),
+    nl,
+
+    write('flower2 is '),
+    write(F2),
+    write(', '),
+    write(S2),
+    write(', '),
+    write(M2),
+    write(', '),
+    write(C2),
+    nl,
+
+    write('flower3 is '),
+    write(F3),
+    write(', '),
+    write(S3),
+    write(', '),
+    write(M3),
+    write(', '),
+    write(C3),
+    nl,
+
+    write('flower4 is '),
+    write(F4),
+    write(', '),
+    write(S4),
+    write(', '),
+    write(M4),
+    write(', '),
+    write(C4),
+    nl.
+
+[1mtrue.[0m
+
+?- listing(size(S1,S2)).
+
+
+size(S1, S2) :-
+    (   sDifference(S1, S2)
+    ->  true
+    ;   sDifference(S2, S1)
+    ->  true
+    ;   S1=S2
+    ->  true
+    ;   false
+    ).
+
+[1mtrue.[0m
+
+?- bedplan(F1,F2,F3,F4).
+
+
+flower1 is roses, med, dry, red
+flower2 is daisies, med, wet, yellow
+flower3 is petunias, med, wet, pink
+flower4 is snapdragons, tall, dry, red
+
+F1 = roses,
+F2 = daisies,
+F3 = petunias,
+F4 = snapdragons ;[1m;[0m
+
+flower1 is roses, med, dry, red
+flower2 is daisies, med, wet, yellow
+flower3 is petunias, med, wet, pink
+flower4 is lilies, short, dry, white
+
+
+F1 = roses,
+F2 = daisies,
+F3 = petunias,
+F4 = lilies ;[1m;[0m
+
+
+flower1 is roses, med, dry, red
+flower2 is daisies, med, wet, yellow
+flower3 is petunias, med, wet, pink
+flower4 is buttercup, short, dry, yellow
+
+
+F1 = roses,
+F2 = daisies,
+F3 = petunias,
+F4 = buttercup ;[1m;[0m
+
+
+flower1 is roses, med, dry, red
+flower2 is daisies, med, wet, yellow
+flower3 is petunias, med, wet, pink
+flower4 is poppy, med, dry, red
+F1 = roses,
+F2 = daisies,
+F3 = petunias,
+F4 = poppy 
+[1m.[0m
+
+?- noprotocol().
+
+
