@@ -1,0 +1,26 @@
+(* Problem Four: CYK Parsing Algorithm-Inspired Problem *)
+
+(* Helper Function - sublist_decr n , n = initial list value, continues to 1 *)
+let rec sublist_decr = function n ->
+  if n>1 then (n-1)::sublist_decr(n-1) else [];;
+
+(* Helper Function - sublist_incr (i,n), i = initial list value and n = length of list *)
+let rec sublist_incr = function (i,n) ->
+  if n > 1 then i::sublist_incr(i+1,n-1) else [];;
+
+(* Helper Function - set alista alistb, concatenates two lists alista alistb -> (a, b) *)
+let rec set a_list_a a_list_b =
+  match a_list_a, a_list_b with
+  | [], _ -> []
+  | _, [] -> []
+  | hd :: tl, hd2 :: tl2 -> (hd, hd2) :: (set tl tl2)
+
+(* Prototpe: cyk_sublists n returns all of the positive integer pairs 
+ x and y that add up to n.  Pairs are returned as tuples.  Argument 
+n must be larger than 1, otherwise return [] 
+ 
+Signature:  
+ 
+val cyk_sublists : int -> (int * int) list = <fun> *)
+let rec cyk_sublists = function n ->
+  (set (sublist_incr(1,n)) (sublist_decr(n)));;
